@@ -1,80 +1,226 @@
 @import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
 
+
+
+/* =========================================
+Champions League Design
+========================================= */
+
 body {
-  font-family: "Cabin", Arial, sans-serif;
-  color: #ffffff;
-  background-color: #108a93;
+background: #f4f6f8;
+color: #172033;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lobster', cursive;
+/* Hero */
+
+.hero {
+position: relative;
+overflow: hidden;
+min-height: 420px;
+margin: -1rem -12px 4rem;
+padding: 90px 8%;
+display: flex;
+align-items: center;
+background:
+radial-gradient(circle at 85% 20%, rgba(45, 212, 191, .18), transparent 30%),
+radial-gradient(circle at 15% 80%, rgba(59, 130, 246, .18), transparent 35%),
+linear-gradient(135deg, #07111f 0%, #0b1b33 55%, #10294a 100%);
+color: white;
 }
 
-.navbar {
-  background-color: #ad1d28;
-  border-color: #911821;
+.hero::after {
+content: "★";
+position: absolute;
+right: 8%;
+bottom: -70px;
+font-size: 300px;
+line-height: 1;
+color: rgba(255, 255, 255, .035);
 }
 
-.navbar-brand {
-  font-family: 'Lobster', cursive;
+.hero-content {
+position: relative;
+z-index: 1;
+max-width: 700px;
 }
 
-.banner {
-  margin-top: 4em;
-  border-bottom: 1px solid #469ea8;
-  margin-bottom: 1.5em;
-  padding-bottom: 0.5em;
+.hero-kicker,
+.section-label,
+.card-label {
+display: block;
+margin-bottom: 12px;
+font-size: .75rem;
+font-weight: 700;
+letter-spacing: .18em;
+color: #38d9a9;
 }
 
-h1 small {
-  color: #aaa;
+.hero h1 {
+margin: 0;
+font-size: clamp(3rem, 7vw, 5.5rem);
+font-weight: 800;
+letter-spacing: -0.05em;
 }
 
-.card {
-  background-color: #469ea8;
+.hero p {
+margin: 15px 0 30px;
+font-size: 1.3rem;
+color: #c7d2e3;
 }
 
-.card-primary {
-  border-color: #a2ced3;
-  margin-bottom: 1rem;
+/* Buttons */
+
+.btn-primary {
+padding: 12px 24px;
+border: none;
+border-radius: 8px;
+background: #38d9a9;
+color: #07111f;
+font-weight: 700;
+transition: all .2s ease;
 }
 
-.review-header {
-  background-color: #31727a;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  margin-bottom: 0.5em;
+.btn-primary:hover {
+background: #5ee7c0;
+color: #07111f;
+transform: translateY(-2px);
 }
 
-.review {
-  margin-right: -20px;
-  margin-left: -20px;
-  margin-bottom: 1em;
+/* Section heading */
+
+.section-header {
+margin-bottom: 25px;
 }
 
-.badge-default, .btn-primary {
-  background-color: #ad1d28;
-  border-color: #911821;
+.section-header h2 {
+margin: 0;
+font-size: 2.2rem;
+font-weight: 750;
+color: #111827;
 }
 
-h4 a, h4 a:hover {
-  color: #fff;
+/* Cards */
+
+.feature-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 24px;
 }
 
-h4 small {
-  font-size: 60%;
-  line-height: 200%;
-  color: #aaa;
+.feature-card {
+display: flex;
+gap: 22px;
+padding: 30px;
+border: 1px solid #e1e7ee;
+border-radius: 16px;
+background: white;
+color: inherit;
+text-decoration: none;
+box-shadow: 0 8px 25px rgba(15, 23, 42, .06);
+transition: all .25s ease;
 }
 
-.address {
-  margin-bottom: 0.5rem;
+.feature-card:hover {
+color: inherit;
+text-decoration: none;
+transform: translateY(-6px);
+box-shadow: 0 18px 40px rgba(15, 23, 42, .12);
 }
 
-.facilities span.badge {
-  margin-right:2px;
+.feature-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+flex: 0 0 58px;
+height: 58px;
+border-radius: 14px;
+background: #e8fbf5;
+font-size: 1.7rem;
 }
 
-legend {
-  font-family: 'Lobster', cursive;
+.feature-content h3 {
+margin: 0 0 10px;
+font-size: 1.45rem;
+font-weight: 700;
+}
+
+.feature-content p {
+margin-bottom: 18px;
+color: #687386;
+line-height: 1.6;
+}
+
+.card-label {
+margin-bottom: 7px;
+color: #718096;
+font-size: .68rem;
+}
+
+.card-link,
+.text-link {
+color: #087f68;
+font-weight: 700;
+}
+
+/* Intro */
+
+.intro-section {
+margin-top: 70px;
+margin-bottom: 50px;
+padding: 55px;
+border-radius: 18px;
+background: #0b1b33;
+color: white;
+}
+
+.intro-content {
+max-width: 720px;
+}
+
+.intro-section h2 {
+margin: 0 0 15px;
+font-size: 2.3rem;
+font-weight: 750;
+}
+
+.intro-section p {
+margin-bottom: 25px;
+color: #bdc9d9;
+font-size: 1.05rem;
+line-height: 1.7;
+}
+
+.intro-section .section-label {
+color: #38d9a9;
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+.hero {
+min-height: 380px;
+margin-top: -1rem;
+padding: 70px 25px;
+}
+
+.hero h1 {
+font-size: 3.2rem;
+}
+
+.feature-grid {
+grid-template-columns: 1fr;
+}
+
+.feature-card {
+padding: 24px;
+}
+
+.intro-section {
+padding: 35px 25px;
+}
+
+.intro-section h2 {
+font-size: 1.8rem;
+}
 }

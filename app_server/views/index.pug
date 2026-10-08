@@ -1,5 +1,44 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+//- Hero section
+.hero
+.hero-content
+span.hero-kicker EUROPE'S ELITE
+h1 Champions League
+p The home of European football
+a.btn.btn-primary(href="/matches") Explore Matches
+
+//- Main content
+.section-header
+span.section-label EXPLORE
+h2 Everything Champions League
+
+.feature-grid
+a.feature-card(href="/matches")
+.feature-icon ⚽
+.feature-content
+span.card-label FIXTURES
+h3 Upcoming Matches
+p Follow the latest Champions League fixtures, results and match action.
+span.card-link View matches →
+
+```
+a.feature-card(href="/teams")
+  .feature-icon 🏆
+  .feature-content
+    span.card-label CLUBS
+    h3 Champions League Teams
+    p Explore the clubs competing for Europe's biggest prize.
+    span.card-link Explore teams →
+```
+
+//- Intro section
+.intro-section
+.intro-content
+span.section-label THE COMPETITION
+h2 Where football legends are made
+p
+| Follow the biggest clubs, the most exciting matches and the journey
+| towards European football's ultimate prize.
+a.text-link(href="/about") Learn more about us →
