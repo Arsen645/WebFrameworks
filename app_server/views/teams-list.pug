@@ -1,31 +1,22 @@
 extends layout
+include _includes/sharedHTMLfunctions
 
 block content
   .row.banner
     .col-12
-      h1 Champions League Teams
-
+      h1= pageHeader.title
+        small &nbsp;#{pageHeader.strapline}
   .row
-    .col-12.col-md-6
-      .card
-        .card-body
-          h2 Arsenal
-          p English club competing in the Champions League.
-
-    .col-12.col-md-6
-      .card
-        .card-body
-          h2 Real Madrid
-          p Spanish club competing in the Champions League.
-
-    .col-12.col-md-6
-      .card
-        .card-body
-          h2 Bayern Munich
-          p German club competing in the Champions League.
-
-    .col-12.col-md-6
-      .card
-        .card-body
-          h2 Barcelona
-          p Spanish club competing in the Champions League.
+    .col-12.col-md-8
+      each team in teams
+        .card
+          .card-block
+            h4
+              a(href="/team")= team.name
+              small &nbsp;
+                +outputRating(team.rating)
+              span.badge.badge-pill.badge-default.float-right #{team.titles} titles
+            p.address #{team.stadium}, #{team.country}
+            .facilities
+              each honour in team.honours
+                span.badge.badge-warning= honour
