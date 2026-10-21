@@ -1,6 +1,17 @@
+//- Reusable mixins shared by several views
+
+//- Outputs 5 stars, the first `rating` of them filled
 mixin outputRating(rating)
   - for (var i = 1; i <= 5; i++)
     if rating >= i
       i.fa.fa-star
     else
       i.fa.fa-star-o
+
+//- Outputs one form field from a field object defined in the controller
+mixin formField(field)
+  .mb-3
+    label.form-label(for=field.id)= field.label
+    input.form-control(type=field.type, id=field.id, name=field.id, placeholder=field.placeholder, required=field.required)
+    if field.help
+      .form-text= field.help

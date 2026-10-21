@@ -9,6 +9,18 @@ const usersRouter = require('./app_server/routes/users');
 
 var app = express();
 
+app.locals.site = {
+  name: 'Champions League',
+  footer: '© Champions League student project 2026 - not affiliated with UEFA',
+  nav: [
+    { label: 'Home', href: '/' }
+  ],
+  authNav: [
+    { label: 'Login', href: '/login' },
+    { label: 'Register', href: '/register' }
+  ]
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'pug');
@@ -18,6 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules', 'bootstrap', 'dist')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

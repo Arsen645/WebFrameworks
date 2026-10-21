@@ -1,0 +1,16 @@
+extends layout
+include _includes/sharedHTMLfunctions
+
+block content
+  .page-header
+    h1= pageHeader.title
+      small.ms-2 #{pageHeader.strapline}
+  .row
+    .col-12.col-md-8.col-lg-6
+      form(action=form.action, method='post')
+        each field in form.fields
+          +formField(field)
+        button.btn.btn-primary(type='submit')= form.submitLabel
+      p.mt-4
+        | #{alt.text}&nbsp;
+        a(href=alt.href)= alt.label

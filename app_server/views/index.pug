@@ -1,44 +1,33 @@
 extends layout
 
 block content
-//- Hero section
-.hero
-.hero-content
-span.hero-kicker EUROPE'S ELITE
-h1 Champions League
-p The home of European football
-a.btn.btn-primary(href="/matches") Explore Matches
+  //- Hero section
+  .hero
+    .hero-content
+      span.hero-kicker= hero.kicker
+      h1= hero.title
+      p= hero.subtitle
+      a.btn.btn-primary(href=hero.cta.href)= hero.cta.label
 
-//- Main content
-.section-header
-span.section-label EXPLORE
-h2 Everything Champions League
+  //- Main content
+  .section-header
+    span.section-label= features.label
+    h2= features.title
 
-.feature-grid
-a.feature-card(href="/matches")
-.feature-icon ⚽
-.feature-content
-span.card-label FIXTURES
-h3 Upcoming Matches
-p Follow the latest Champions League fixtures, results and match action.
-span.card-link View matches →
+  .feature-grid
+    each card in features.cards
+      a.feature-card(href=card.href)
+        .feature-icon= card.icon
+        .feature-content
+          span.card-label= card.label
+          h3= card.title
+          p= card.text
+          span.card-link= card.linkText
 
-```
-a.feature-card(href="/teams")
-  .feature-icon 🏆
-  .feature-content
-    span.card-label CLUBS
-    h3 Champions League Teams
-    p Explore the clubs competing for Europe's biggest prize.
-    span.card-link Explore teams →
-```
-
-//- Intro section
-.intro-section
-.intro-content
-span.section-label THE COMPETITION
-h2 Where football legends are made
-p
-| Follow the biggest clubs, the most exciting matches and the journey
-| towards European football's ultimate prize.
-a.text-link(href="/about") Learn more about us →
+  //- Intro section
+  .intro-section
+    .intro-content
+      span.section-label= intro.label
+      h2= intro.title
+      p= intro.text
+      a.text-link(href=intro.link.href)= intro.link.label

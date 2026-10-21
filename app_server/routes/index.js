@@ -1,21 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const ctrlLocations = require('../controllers/locations');
-const ctrlOthers = require('../controllers/others');
 const ctrlMain = require('../controllers/main');
-const ctrlTeams = require('../controllers/teams');
+const ctrlOthers = require('../controllers/others');
 
-/* Locations pages */
-router.get('/', ctrlLocations.homelist);
-router.get('/location', ctrlLocations.locationInfo);
-router.get('/location/review/new', ctrlLocations.addReview);
-
-/* Other pages */
-router.get('/about', ctrlOthers.about);
-
+/* Home page */
 router.get('/', ctrlMain.home);
-router.get('/teams', ctrlTeams.teamList);
-router.get('/about', ctrlMain.about);
+
+/* Login and register pages */
+router.get('/login', ctrlOthers.login);
+router.post('/login', ctrlOthers.doLogin);
+router.get('/register', ctrlOthers.register);
+router.post('/register', ctrlOthers.doRegister);
 
 module.exports = router;

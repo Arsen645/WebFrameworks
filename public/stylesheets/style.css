@@ -224,3 +224,63 @@ padding: 35px 25px;
 font-size: 1.8rem;
 }
 }
+
+/* =========================================
+Inner pages (teams, matches, forms) - added for Lab 3
+========================================= */
+
+.navbar { box-shadow: 0 2px 10px rgba(7, 17, 31, .25); }
+
+.page-header {
+margin: 2.5rem 0 1.75rem;
+padding-bottom: .75rem;
+border-bottom: 2px solid #38d9a9;
+}
+
+.page-header h1 {
+margin: 0;
+font-weight: 800;
+color: #07111f;
+}
+
+.page-header h1 small {
+font-size: 1rem;
+font-weight: 500;
+color: #687386;
+}
+
+.card {
+border: 1px solid #e1e7ee;
+border-radius: 14px;
+box-shadow: 0 8px 25px rgba(15, 23, 42, .06);
+}
+
+.card h4 a { color: #0b1b33; text-decoration: none; }
+.card h4 a:hover { color: #087f68; }
+
+.fa-star, .fa-star-o { color: #f5b301; font-size: .85em; }
+
+.stage {
+display: block;
+margin-bottom: 6px;
+font-size: .7rem;
+font-weight: 700;
+letter-spacing: .14em;
+text-transform: uppercase;
+color: #718096;
+}
+
+.match .vs { color: #718096; font-size: .7em; }
+
+.address { color: #687386; }
+
+.site-footer {
+margin: 3rem 0 1.5rem;
+color: #718096;
+}
+
+.intro-section .text-link { color: #38d9a9; }
+
+@media (max-width: 575px) {
+.page-header h1 { font-size: 1.8rem; }
+}
