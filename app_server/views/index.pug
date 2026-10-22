@@ -1,4 +1,5 @@
 extends layout
+include _includes/sharedHTMLfunctions
 
 block content
   //- Hero section
@@ -23,6 +24,26 @@ block content
           h3= card.title
           p= card.text
           span.card-link= card.linkText
+
+  //- Teams section
+  .section-header.teams-header
+    span.section-label= teamsSection.label
+    h2= teamsSection.title
+
+  .row.g-3
+    each team in teams
+      .col-12.col-md-6
+        .card.h-100
+          .card-body
+            h4
+              | #{team.name}
+              small.ms-2
+                +outputRating(team.rating)
+              span.badge.rounded-pill.bg-dark.float-end #{team.titles} titles
+            p.address #{team.stadium}, #{team.city}, #{team.country}
+            .facilities
+              each honour in team.honours
+                span.badge.bg-success-subtle.text-success-emphasis.me-1= honour
 
   //- Intro section
   .intro-section

@@ -284,3 +284,5 @@ color: #718096;
 @media (max-width: 575px) {
 .page-header h1 { font-size: 1.8rem; }
 }
+
+.teams-header { margin-top: 4rem; }

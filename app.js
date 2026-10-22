@@ -1,3 +1,4 @@
+require('./app_server/models/db');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -11,7 +12,7 @@ var app = express();
 
 app.locals.site = {
   name: 'Champions League',
-  footer: '© Champions League student project 2026 - not affiliated with UEFA',
+  footer: '© Champions League project',
   nav: [
     { label: 'Home', href: '/' }
   ],
