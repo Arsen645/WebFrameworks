@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 // Replace PASSWORD with your database user's password (no < > brackets).
 // Do not upload this file to GitHub with the real password in it.
 const dbURI = process.env.MONGODB_URI ||
-  'mongodb+srv://arsen00311_db_user:dguC439jxy@cluster0.qd9lojx.mongodb.net/ucl?retryWrites=true&w=majority';
+  'mongodb+srv://arsen00311_db_user:dgukC439jxy@cluster0.qd9lojx.mongodb.net/ucl?retryWrites=true&w=majority';
 
 try {
   mongoose.connect(dbURI).then(
@@ -16,5 +16,5 @@ try {
 } catch (e) {
   console.log('could not connect');
 }
-
 require('./teams');
+require('./users');
