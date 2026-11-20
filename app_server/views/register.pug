@@ -7,6 +7,8 @@ block content
       small.ms-2 #{pageHeader.strapline}
   .row
     .col-12.col-md-8.col-lg-6
+      if error
+        .alert.alert-danger= error
       form(action=form.action, method='post')
         each field in form.fields
           +formField(field)

@@ -1,5 +1,11 @@
-/* GET 'Login' page - the data the form will send to the database is modelled here */
-const login = function(req, res){
+const axios = require('axios');
+
+const apiOptions = { server: 'http://localhost:3000' };
+if (process.env.NODE_ENV === 'production') {
+  apiOptions.server = 'https://YOUR-APP-NAME.onrender.com';
+}
+
+const _renderLogin = function(req, res, error) {
   res.render('login', {
     title: 'Login - Champions League',
     pageHeader: { title: 'Login', strapline: 'Welcome back, fan' },
@@ -11,12 +17,12 @@ const login = function(req, res){
         { id: 'password', label: 'Password', type: 'password', placeholder: 'Your password', required: true }
       ]
     },
-    alt: { text: 'New here?', label: 'Create an account', href: '/register' }
+    alt: { text: 'New here?', label: 'Create an account', href: '/register' },
+    error: error
   });
 };
 
-/* GET 'Register' page */
-const register = function(req, res){
+const _renderRegister = function(req, res, error) {
   res.render('register', {
     title: 'Register - Champions League',
     pageHeader: { title: 'Register', strapline: 'Join the Champions League community' },
@@ -31,13 +37,57 @@ const register = function(req, res){
         { id: 'confirmPassword', label: 'Confirm password', type: 'password', placeholder: 'Repeat your password', required: true }
       ]
     },
-    alt: { text: 'Already registered?', label: 'Login', href: '/login' }
+    alt: { text: 'Already registered?', label: 'Login', href: '/login' },
+    error: error
   });
 };
 
-/* POST handlers - no database yet, so just redirect */
-const doLogin = function(req, res){ res.redirect('/'); };
-const doRegister = function(req, res){ res.redirect('/login'); };
+/* GET pages */
+const login = function(req, res) { _renderLogin(req, res); };
+const register = function(req, res) { _renderRegister(req, res); };
+
+/* POST register -> API */
+const doRegister = async function(req, res) {
+  try {
+    await axios.post(apiOptions.server + '/api/register', {
+      name: req.body.name,
+      email: req.body.email,
+      favouriteTeam: req.body.favouriteTeam,
+      password: req.body.password,
+      confirmPassword: req.body.confirmPassword
+    });
+    res.redirect('/login');                      // 201 = success
+  } catch (err) {
+    if (err.response) {                          // API replied with 400 / 409
+      res.status(err.response.status);
+      return _renderRegister(req, res, err.response.data.message || 'Could not register');
+    }
+    res.status(500).render('error', {            // API not reachable
+      message: 'Unable to connect to API server',
+      error: err
+    });
+  }
+};
+
+/* POST login -> API */
+const doLogin = async function(req, res) {
+  try {
+    await axios.post(apiOptions.server + '/api/login', {
+      email: req.body.email,
+      password: req.body.password
+    });
+    res.redirect('/');                           // 200 = success
+  } catch (err) {
+    if (err.response) {                          // API replied with 400 / 401
+      res.status(err.response.status);
+      return _renderLogin(req, res, err.response.data.message || 'Login failed');
+    }
+    res.status(500).render('error', {
+      message: 'Unable to connect to API server',
+      error: err
+    });
+  }
+};
 
 module.exports = {
   login,
